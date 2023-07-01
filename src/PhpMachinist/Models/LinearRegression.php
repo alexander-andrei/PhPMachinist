@@ -41,8 +41,6 @@ class LinearRegression
         $meanX = array_sum($xData) / $xDataSize; // 180 / 5 => 36
         $meanY = array_sum($yData) / $xDataSize; // 850 /5 => 170
 
-        // Calculate the slope (m)
-
         /**
          * $numerator => refers to the sum of the product of the deviations of the independent variable (X)
          * from its mean and the corresponding deviations of the dependent variable (Y) from its mean.
