@@ -9,7 +9,7 @@ namespace PhpMachinist\Models;
  * It's like a decision-making tool that separates things into two categories.
  *
  * Formula: sigmoid(x) = 1 / (1 + exp(-x))
- * 
+ *
  * x: It represents the input value to the sigmoid function. In the context of
  * logistic regression, 'x' typically refers to the linear combination of input
  * variables and their corresponding weights.
@@ -31,7 +31,7 @@ class LogisticRegression
     private float $intercept;
 
     /**
-     * @param $x => an array of age => height values:
+     * @param array $x => an array of age => height values:
      * [
      *      [18, 165],
      *      [25, 170],
@@ -45,7 +45,7 @@ class LogisticRegression
      *      [65, 190]
      * ];
      *
-     * @param $y => array of 0 and 1 representing gender female or male
+     * @param array $y => array of 0 and 1 representing gender female or male
      *  [0, 0, 0, 1, 1, 0, 0, 1, 1, 1]
      *
      * @param float $learningRate => It represents the learning rate or step size, which determines how
@@ -61,7 +61,7 @@ class LogisticRegression
      * the training data. The appropriate value depends on the complexity of the problem and the convergence
      * behavior of the model.
      */
-    public function train($x, $y, float $learningRate = 0.01, int $numIterations = 100): void
+    public function train(array $x, array $y, float $learningRate = 0.01, int $numIterations = 100): void
     {
         // 10
         $numSamples = count($x);
@@ -164,7 +164,7 @@ class LogisticRegression
         }
     }
 
-    public function predictProbability($x): array
+    public function predictProbability(array $x): array
     {
         $yPred = [];
         foreach ($x as $sample) {
@@ -197,7 +197,7 @@ class LogisticRegression
         return $yPred;
     }
 
-    public function predict($x, $threshold = 0.5): array
+    public function predict(array $x, float $threshold = 0.5): array
     {
         $yPred = $this->predictProbability($x);
 
