@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 use PhpMachinist\Models\LogisticRegression;
 
 /**
@@ -30,12 +32,7 @@ $lr->train($peopleByAgeAndHeight, $peopleBySex);
 
 $weights = $lr->getWeights();
 $intercept = $lr->getIntercept();
-
-echo "Learned Weights: " . implode(", ", $weights) . "\n";
-echo "Intercept: $intercept\n";
-
 $newSample = [35, 170];
 $prediction = $lr->predict([$newSample])[0];
 
-echo "New Sample: [" . implode(", ", $newSample) . "]\n";
 echo "Prediction: " . ($prediction == 0 ? "Female" : "Male") . "\n";

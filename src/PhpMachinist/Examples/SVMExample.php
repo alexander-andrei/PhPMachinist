@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 // Training data
 use PhpMachinist\Models\SVM;
 
@@ -13,7 +15,7 @@ $samples = [
 $labels = [0, 0, 1, 1, 1]; // 0 represents short, 1 represents tall
 
 // Create and train the SVM classifier
-$classifier = new SVM('poly');
+$classifier = new SVM('polynomial');
 $classifier->train($samples, $labels);
 
 // Predict the class for a new sample

@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 use PhpMachinist\NeuralNetworks\FeedForward\NeuralNetwork;
 
 $layerSizes = [2, 3, 1]; // Number of neurons in each layer

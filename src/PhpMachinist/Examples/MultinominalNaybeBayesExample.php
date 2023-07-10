@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 use PhpMachinist\Models\MultinomialNaiveBayes;
 
 // Dataset containing features for playing tennis
