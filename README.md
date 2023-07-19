@@ -161,3 +161,39 @@ $inputs = [25, 170]; // Input values
 
 $outputs = $network->forward($inputs);// Result: 0.65458049013959 
 ```
+
+8. Backpropagation is a mathematical technique used for training feed-forward neural networks. It involves computing the gradients of the loss function with respect to the model's weights and biases so that we can update them using gradient descent or its variants.
+
+```php
+$inputLayerSize = 2;
+$hiddenLayerSize = 3;
+$outputLayerSize = 1;
+
+$neuralNetwork = new NeuralNetwork($inputLayerSize, $hiddenLayerSize, $outputLayerSize, 0.1);
+
+$trainingInputs = [[0, 0], [0, 1], [1, 0], [1, 1]];
+$trainingTargets = [[0], [1], [1], [0]];
+
+$epochs = 10000;
+for ($i = 0; $i < $epochs; $i++) {
+    for ($j = 0; $j < count($trainingInputs); $j++) {
+        $input = $trainingInputs[$j];
+        $target = $trainingTargets[$j];
+        $neuralNetwork->backPropagation($input, $target);
+    }
+}
+
+
+foreach ($trainingInputs as $input) {
+    $output = $neuralNetwork->forwardPropagation($input);
+    echo "Input: " . implode(", ", $input) . " | Output: " . round($output[0]) . PHP_EOL;
+}
+/**
+* Result:
+*
+* Input: 0, 0 | Output: 1
+* Input: 0, 1 | Output: 1
+* Input: 1, 0 | Output: 1
+* Input: 1, 1 | Output: 0
+*/
+```
